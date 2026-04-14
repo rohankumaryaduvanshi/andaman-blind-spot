@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andaman Blind Spot | Premium Surveillance & Tech Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Corporate Brand Variables */
+        :root {
+            --brand-navy: #0b192c;
+            --brand-dark: #060e1a;
+            --brand-teal: #00d2ff;
+            --brand-teal-hover: #0099cc;
+            --text-light: #f8f9fa;
+            --text-muted: #a0aec0;
+            --card-bg: #112240;
+            --border-color: #1f365c;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--brand-navy); color: var(--text-light); line-height: 1.6; scroll-behavior: smooth; }
+        
+        /* Utility Classes */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; color: var(--text-light); text-transform: uppercase; letter-spacing: 2px;}
+        .section-title span { color: var(--brand-teal); }
+        .btn { display: inline-block; padding: 15px 35px; background-color: var(--brand-teal); color: var(--brand-navy); text-decoration: none; font-weight: bold; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; border: none; cursor: pointer; }
+        .btn:hover { background-color: var(--brand-teal-hover); color: white; box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3); }
+
+        /* Header */
+        header { background-color: var(--brand-dark); padding: 15px 0; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--brand-teal); }
+        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
+        .logo-area { display: flex; align-items: center; gap: 15px; }
+        .logo-area img { height: 50px; } /* Replace with actual logo */
+        .logo-text { font-size: 1.5rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;}
+        .logo-text span { color: var(--brand-teal); }
+        nav ul { list-style: none; display: flex; gap: 25px; }
+        nav a { color: var(--text-light); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        nav a:hover { color: var(--brand-teal); }
+
+        /* Hero Section */
+        .hero { position: relative; height: 90vh; display: flex; align-items: center; background: linear-gradient(rgba(11, 25, 44, 0.85), rgba(6, 14, 26, 0.95)), url('https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=1920&q=80') center/cover; }
+        .hero-content { max-width: 800px; }
+        .hero-tagline { color: var(--brand-teal); font-size: 1.2rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; display: block; }
+        .hero h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; text-transform: uppercase; }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 40px; max-width: 600px; }
+
+        /* Services Grid */
+        .services { padding: 100px 0; background-color: var(--brand-navy); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .service-card { background-color: var(--card-bg); padding: 40px 30px; border-radius: 8px; border-top: 4px solid var(--border-color); transition: 0.3s; text-align: center; }
+        .service-card:hover { border-top-color: var(--brand-teal); transform: translateY(-10px); }
+        .service-card i { font-size: 3rem; color: var(--brand-teal); margin-bottom: 20px; }
+        .service-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .service-card p { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* AMC Plans */
+        .amc { padding: 100px 0; background-color: var(--brand-dark); }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; align-items: center; }
+        .price-card { background-color: var(--card-bg); padding: 40px; border-radius: 8px; border: 1px solid var(--border-color); text-align: center; position: relative; }
+        .price-card.popular { border-color: var(--brand-teal); box-shadow: 0 0 20px rgba(0, 210, 255, 0.1); transform: scale(1.05); z-index: 10; }
+        .badge { position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); background: var(--brand-teal); color: var(--brand-navy); padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.8rem; }
+        .price-card h3 { font-size: 1.8rem; margin-bottom: 15px; color: var(--text-light); }
+        .price { font-size: 2.5rem; font-weight: 800; color: var(--brand-teal); margin-bottom: 20px; }
+        .price span { font-size: 1rem; color: var(--text-muted); font-weight: normal; }
+        .price-card ul { list-style: none; margin-bottom: 30px; text-align: left; }
+        .price-card ul li { margin-bottom: 15px; color: var(--text-muted); padding-left: 25px; position: relative; }
+        .price-card ul li::before { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; color: var(--brand-teal); }
+
+        /* Profile & Contact */
+        .founder-contact { padding: 100px 0; background-color: var(--brand-navy); }
+        .fc-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+        .founder-box { background-color: var(--brand-dark); padding: 40px; border-radius: 8px; border-left: 5px solid var(--brand-teal); }
+        .founder-box h3 { color: var(--brand-teal); font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+        .founder-box h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        .founder-box p { color: var(--text-muted); margin-bottom: 20px; font-size: 1.1rem; }
+        
+        .contact-info { display: flex; flex-direction: column; gap: 20px; margin-top: 30px; }
+        .info-item { display: flex; align-items: center; gap: 15px; font-size: 1.1rem; }
+        .info-item i { color: var(--brand-teal); font-size: 1.5rem; width: 30px; text-align: center; }
+
+        .contact-form { background-color: var(--card-bg); padding: 40px; border-radius: 8px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 15px; background-color: var(--brand-navy); border: 1px solid var(--border-color); color: white; border-radius: 4px; font-size: 1rem; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--brand-teal); }
+
+        /* Footer */
+        footer { background-color: #03080f; padding: 30px 0; text-align: center; border-top: 1px solid #112240; color: var(--text-muted); }
+        footer p { font-size: 0.9rem; }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 3rem; }
+            .fc-wrapper { grid-template-columns: 1fr; }
+            .price-card.popular { transform: scale(1); }
+            nav ul { display: none; } /* Mobile menu simplified for now */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo-area">
+                <div class="logo-text">Andaman <span>Blind Spot</span></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#services">Solutions</a></li>
+                    <li><a href="#amc">AMC Plans</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-tagline">Smart Vision for a Safer Island.</span>
+                <h1>Zero Blind Spots.<br>Isolated Peace.</h1>
+                <p>Sri Vijaya Puram's most advanced tech-driven surveillance infrastructure. We combine enterprise-grade hardware with intelligent network configuration to secure what matters most.</p>
+                <a href="https://wa.me/919434270835?text=Hi%20Rohan,%20I%20want%20to%20request%20a%20custom%20security%20solution." class="btn">Request Custom Solution</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Enterprise <span>Solutions</span></h2>
+            <div class="grid">
+                <div class="service-card">
+                    <i class="fa-solid fa-camera-retro"></i>
+                    <h3>High-Def Analytics Cameras</h3>
+                    <p>Deployment of advanced IP and Analog systems with extreme low-light capabilities and ultra-clear resolution for both residential and commercial spaces.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <h3>Smart Network Integration</h3>
+                    <p>Complex NVR/DVR configurations integrated directly with your smartphone. View live footage globally with zero lag and secure data pipelines.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <h3>Perimeter Security</h3>
+                    <p>Tailored layouts for resorts, godowns, and large properties ensuring absolutely no blind spots. AI motion alerts sent directly to your device.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="amc" class="amc">
+        <div class="container">
+            <h2 class="section-title">Annual Maintenance <span>Contracts</span></h2>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>Isolated Basic</h3>
+                    <div class="price">₹1,999<span>/year</span></div>
+                    <ul>
+                        <li>Bi-annual Physical Checkup</li>
+                        <li>Lens Cleaning & Focus Adjustment</li>
+                        <li>Basic Wiring Inspection</li>
+                        <li>Standard Support (48 Hrs)</li>
+                    </ul>
+                    <a href="#contact" class="btn" style="width: 100%; background: transparent; border: 1px solid var(--brand-teal); color: var(--brand-teal);">Select Plan</a>
+                </div>
+                <div class="price-card popular">
+                    <div class="badge">Most Recommended</div>
+                    <h3>Smart Premium</h3>
+                    <div class="price">₹4,499<span>/year</span></div>
+                    <ul>
+                        <li>Quarterly Physical Checkup</li>
+                        <li>DVR/NVR Storage Optimization</li>
+                        <li>App Configuration Updates</li>
+                        <li>Priority Support (24 Hrs)</li>
+                        <li>Free 1 Cable Replacement</li>
+                    </ul>
+                    <a href="#contact" class="btn" style="width: 100%;">Select Plan</a>
+                </div>
+                <div class="price-card">
+                    <h3>Elite Vision (Commercial)</h3>
+                    <div class="price">Custom<span></span></div>
+                    <ul>
+                        <li>Monthly Full-System Audit</li>
+                        <li>Network & Cyber Security Check</li>
+                        <li>Zero Downtime Guarantee</li>
+                        <li>Immediate Emergency Support</li>
+                        <li>Dedicated Account Manager</li>
+                    </ul>
+                    <a href="#contact" class="btn" style="width: 100%; background: transparent; border: 1px solid var(--brand-teal); color: var(--brand-teal);">Get Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="founder-contact">
+        <div class="container fc-wrapper">
+            <div class="founder-box">
+                <h3>Founder & Tech Lead</h3>
+                <h2>Rohan Kumar Yadav</h2>
+                <p>Bringing a unique intersection of hardware expertise and software programming to the surveillance industry. Unlike standard installers, we understand network protocols, data packets, and app integrations, ensuring your security system is genuinely "Smart".</p>
+                
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Sri Vijaya Puram, Andaman & Nicobar Islands</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span>+91 9434270835</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>rohankumaryadavv@zohomail.in</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3 style="font-size: 2rem; margin-bottom: 20px; color: var(--text-light);">Book an Inspection</h3>
+                <form action="mailto:rohankumaryadavv@zohomail.in" method="POST" enctype="text/plain">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name or Business Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="4" placeholder="Briefly describe your property (e.g., 2-floor house, resort, office)" required></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Send Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p style="margin-bottom: 10px; color: var(--text-light); font-weight: bold; letter-spacing: 1px;">SERVED BY ROHAN KUMAR YADAV. WE COVER 100% OF THE ANDAMAN & NICOBAR ISLANDS.</p>
+            <p>&copy; 2026 Andaman Blind Spot. All Rights Reserved. Designed for enterprise security.</p>
+        </div>
+    </footer>
+
+</body>
+  </html>
